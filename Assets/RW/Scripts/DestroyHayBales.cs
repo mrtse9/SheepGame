@@ -6,23 +6,11 @@ public class DestroyHayBales : MonoBehaviour
 {
     public string tagFilter;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other) 
     {
         if (other.CompareTag(tagFilter))
         {
-            Destroy(other.gameObject);
+            Destroy(gameObject);
         }
     }
 }
