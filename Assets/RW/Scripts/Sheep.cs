@@ -9,8 +9,10 @@ public class Sheep : MonoBehaviour
     private bool hitByHay;
 
     public float dropDestroyDelay; 
-    private Collider myCollider; 
+    private Collider myCollider;
     private Rigidbody myRigidbody;
+
+    private SheepSpawner sheepSpawner;
 
     // Start is called before the first frame update
     void Start()
@@ -41,15 +43,21 @@ public class Sheep : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        if (other.CompareTag("Hay") && !hitByHay)   
+        if (other.CompareTag("Hay") && !hitByHay)
         {
-            Destroy(other.gameObject);  
+            Destroy(other.gameObject);
+            sheepSpawner.RemoveSheepFromList(gameObject);
             HitByHay(); 
         }
         else if (other.CompareTag("DropSheep"))
         {
+            sheepSpawner.RemoveSheepFromList(gameObject);
             Drop();
         }
     }
 
+    public void SetSpawner(SheepSpawner spawner)
+    {
+        sheepSpawner = spawner;
+    }
 }
