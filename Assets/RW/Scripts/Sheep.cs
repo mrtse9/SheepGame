@@ -34,7 +34,10 @@ public class Sheep : MonoBehaviour
     {
         myRigidbody.isKinematic = false;    
         myCollider.isTrigger = false;   
-        Destroy(gameObject, dropDestroyDelay);  
+        Destroy(gameObject, dropDestroyDelay);
+        SoundManager.Instance.PlaySheepDroppedClip();
+        GameStateManager.Instance.DroppedSheep();
+
     }
 
     private void HitByHay()
@@ -45,7 +48,9 @@ public class Sheep : MonoBehaviour
         Instantiate(heartPrefab, transform.position + new Vector3(0, heartOffset, 0), Quaternion.identity);
         TweenScale tweenScale = gameObject.AddComponent<TweenScale>(); ; 
         tweenScale.targetScale = 0;
-        tweenScale.timeToReachTarget = gotHayDestroyDelay; 
+        tweenScale.timeToReachTarget = gotHayDestroyDelay;
+        SoundManager.Instance.PlaySheepHitClip();
+        GameStateManager.Instance.SavedSheep();
     }
 
     private void OnTriggerEnter(Collider other) 
