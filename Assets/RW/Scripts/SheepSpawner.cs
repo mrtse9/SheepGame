@@ -32,12 +32,12 @@ public class SheepSpawner : MonoBehaviour
         sheep.GetComponent<Sheep>().SetSpawner(this);
     }
 
-    private IEnumerator SpawnRoutine() // 1
+    private IEnumerator SpawnRoutine() 
     {
-        while (canSpawn) // 2
+        while (canSpawn) 
         {
-            SpawnSheep(); // 3
-            yield return new WaitForSeconds(timeBetweenSpawns); // 4
+            SpawnSheep(); 
+            yield return new WaitForSeconds(timeBetweenSpawns); 
         }
     }
 
@@ -48,9 +48,9 @@ public class SheepSpawner : MonoBehaviour
 
     public void DestroyAllSheep()
     {
-        foreach (GameObject sheep in sheepList) // 1
+        foreach (GameObject sheep in sheepList)
         {
-            Destroy(sheep); // 2
+            Destroy(sheep);
         }
 
         sheepList.Clear();
