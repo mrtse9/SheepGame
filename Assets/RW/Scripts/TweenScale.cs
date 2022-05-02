@@ -20,9 +20,10 @@ public class TweenScale : MonoBehaviour
     {
         if (percentScaled < 1f) 
         {
-            percentScaled += Time.deltaTime / timeToReachTarget;    
+            percentScaled += Time.deltaTime / timeToReachTarget;
             float scale = Mathf.Lerp(startScale, targetScale, percentScaled); 
-            transform.localScale = new Vector3(scale, scale, scale);
+            transform.localScale = new Vector3(scale, scale, scale); 
         }
+
     }
 }

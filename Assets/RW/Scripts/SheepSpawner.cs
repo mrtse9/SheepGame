@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SheepSpawner : MonoBehaviour
 {
-    public bool canSpawn = true;
+    public bool canSpawn = true; 
 
     public GameObject sheepPrefab;
-    public List<Transform> sheepSpawnPositions = new List<Transform>();
-    public float timeBetweenSpawns;
+    public List<Transform> sheepSpawnPositions = new List<Transform>(); 
+    public float timeBetweenSpawns; 
 
     private List<GameObject> sheepList = new List<GameObject>();
 
@@ -26,33 +26,38 @@ public class SheepSpawner : MonoBehaviour
 
     private void SpawnSheep()
     {
-        Vector3 randomPosition = sheepSpawnPositions[Random.Range(0, sheepSpawnPositions.Count)].position;
-        GameObject sheep = Instantiate(sheepPrefab, randomPosition, sheepPrefab.transform.rotation);
-        sheepList.Add(sheep);
-        sheep.GetComponent<Sheep>().SetSpawner(this);
+        Vector3 randomPosition = sheepSpawnPositions[Random.Range(0, sheepSpawnPositions.Count)].position;  
+        GameObject sheep = Instantiate(sheepPrefab, randomPosition, sheepPrefab.transform.rotation); 
+        sheepList.Add(sheep);   
+        sheep.GetComponent<Sheep>().SetSpawner(this);   
     }
 
-    private IEnumerator SpawnRoutine() 
+
+    private IEnumerator SpawnRoutine()  
     {
-        while (canSpawn) 
+        while (canSpawn)    
         {
-            SpawnSheep(); 
-            yield return new WaitForSeconds(timeBetweenSpawns); 
+            SpawnSheep();   
+            yield return new WaitForSeconds(timeBetweenSpawns);     
         }
     }
+
 
     public void RemoveSheepFromList(GameObject sheep)
     {
         sheepList.Remove(sheep);
     }
 
+
+
     public void DestroyAllSheep()
     {
-        foreach (GameObject sheep in sheepList)
+        foreach (GameObject sheep in sheepList) 
         {
             Destroy(sheep);
         }
 
         sheepList.Clear();
     }
+
 }
