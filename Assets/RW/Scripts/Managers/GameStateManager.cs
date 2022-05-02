@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager Instance; 
@@ -11,10 +12,11 @@ public class GameStateManager : MonoBehaviour
     public int sheepSaved; 
 
     [HideInInspector]
-    public int sheepDropped; 
+    public int sheepDropped;
 
     public int sheepDroppedBeforeGameOver; 
-    public SheepSpawner sheepSpawner;
+    public SheepSpawner sheepSpawner; 
+
 
     // Start is called before the first frame update
     void Awake()
@@ -35,7 +37,6 @@ public class GameStateManager : MonoBehaviour
     {
         sheepSaved++;
         UIManager.Instance.UpdateSheepSaved();
-
     }
 
     private void GameOver()

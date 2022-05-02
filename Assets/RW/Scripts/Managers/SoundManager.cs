@@ -11,11 +11,12 @@ public class SoundManager : MonoBehaviour
     public AudioClip sheepDroppedClip;
 
     private Vector3 cameraPosition; // 5
+
     // Start is called before the first frame update
     void Awake()
     {
-        Instance = this; // 1
-        cameraPosition = Camera.main.transform.position; // 2
+        Instance = this; 
+        cameraPosition = Camera.main.transform.position; 
     }
 
     // Update is called once per frame
@@ -24,9 +25,9 @@ public class SoundManager : MonoBehaviour
         
     }
 
-    private void PlaySound(AudioClip clip) // 1
+    private void PlaySound(AudioClip clip) 
     {
-        AudioSource.PlayClipAtPoint(clip, cameraPosition); // 2
+        AudioSource.PlayClipAtPoint(clip, cameraPosition); 
     }
 
     public void PlayShootClip()
