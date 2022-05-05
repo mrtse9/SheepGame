@@ -39,9 +39,9 @@ public class GameStateManager : MonoBehaviour
     {
         sheepSaved++;
         UIManager.Instance.UpdateSheepSaved();
-        if(sheepSaved == level*3)
+        if(sheepSaved == level*5)
         {
-            sheep.runSpeed = sheep.runSpeed * 3;
+            sheep.runSpeed = sheep.runSpeed * 2;
             level++;
             Debug.Log("LevelUp");
         }
