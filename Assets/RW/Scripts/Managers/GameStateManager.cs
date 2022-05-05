@@ -15,8 +15,10 @@ public class GameStateManager : MonoBehaviour
     public int sheepDropped;
 
     public int sheepDroppedBeforeGameOver; 
-    public SheepSpawner sheepSpawner; 
+    public SheepSpawner sheepSpawner;
 
+    public Sheep sheep;
+    public int level;
 
     // Start is called before the first frame update
     void Awake()
@@ -37,6 +39,12 @@ public class GameStateManager : MonoBehaviour
     {
         sheepSaved++;
         UIManager.Instance.UpdateSheepSaved();
+        if(sheepSaved == level*3)
+        {
+            sheep.runSpeed = sheep.runSpeed * 3;
+            level++;
+            Debug.Log("LevelUp");
+        }
     }
 
     private void GameOver()
@@ -44,6 +52,7 @@ public class GameStateManager : MonoBehaviour
         sheepSpawner.canSpawn = false; 
         sheepSpawner.DestroyAllSheep();
         UIManager.Instance.ShowGameOverWindow();
+        sheep.runSpeed = 3;
     }
 
     public void DroppedSheep()

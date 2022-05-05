@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9516d212e8dcc904b9ef6c28835d3f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 10
+  runSpeed: 3
   gotHayDestroyDelay: 1
   dropDestroyDelay: 4
   heartOffset: 4

@@ -388,6 +388,8 @@ MonoBehaviour:
   sheepDropped: 0
   sheepDroppedBeforeGameOver: 3
   sheepSpawner: {fileID: 293449106}
+  sheep: {fileID: 1486209728256149516, guid: 86c8717854bed46468f817bb287aff83, type: 3}
+  level: 1
 --- !u!1 &289565342
 GameObject:
   m_ObjectHideFlags: 0
