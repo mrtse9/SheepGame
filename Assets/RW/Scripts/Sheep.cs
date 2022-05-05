@@ -7,15 +7,16 @@ public class Sheep : MonoBehaviour
     public float runSpeed;
     public float gotHayDestroyDelay;
     private bool hitByHay;
+    bool hit = false;
 
-    public float dropDestroyDelay; 
+    public float dropDestroyDelay;
     private Collider myCollider;
     private Rigidbody myRigidbody;
 
     private SheepSpawner sheepSpawner;
 
-    public float heartOffset; 
-    public GameObject heartPrefab; 
+    public float heartOffset;
+    public GameObject heartPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,7 @@ public class Sheep : MonoBehaviour
     {
         GameStateManager.Instance.DroppedSheep();
         sheepSpawner.RemoveSheepFromList(gameObject);
-        myRigidbody.isKinematic = false;    
+        myRigidbody.isKinematic = false;
         myCollider.isTrigger = false;
         Destroy(gameObject, dropDestroyDelay);
         SoundManager.Instance.PlaySheepDroppedClip();
@@ -42,28 +43,30 @@ public class Sheep : MonoBehaviour
 
     private void HitByHay()
     {
-        
+
         sheepSpawner.RemoveSheepFromList(gameObject);
         hitByHay = true;
-        runSpeed = 0; 
+        runSpeed = 0;
         Destroy(gameObject, gotHayDestroyDelay);
         Instantiate(heartPrefab, transform.position + new Vector3(0, heartOffset, 0), Quaternion.identity);
-        TweenScale tweenScale = gameObject.AddComponent<TweenScale>(); ; 
+        TweenScale tweenScale = gameObject.AddComponent<TweenScale>(); ;
         tweenScale.targetScale = 0;
         tweenScale.timeToReachTarget = gotHayDestroyDelay;
         SoundManager.Instance.PlaySheepHitClip();
         GameStateManager.Instance.SavedSheep();
     }
 
-    private void OnTriggerEnter(Collider other) 
+    private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.name);
         if (other.CompareTag("Hay") && !hitByHay)
         {
             Destroy(other.gameObject);
             HitByHay();
         }
-        else if (other.CompareTag("DropSheep"))
+        else if (other.CompareTag("DropSheep") && !hit)
         {
+            hit = true;
             Drop();
         }
     }
