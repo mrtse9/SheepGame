@@ -20,11 +20,14 @@ public class GameStateManager : MonoBehaviour
     public Sheep sheep;
     public int level;
 
+    public AudioClip levelUpSound;
+    private AudioSource soundPlayer;
 
     // Start is called before the first frame update
     void Awake()
     {
         Instance = this;
+        soundPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -43,6 +46,7 @@ public class GameStateManager : MonoBehaviour
         if(sheepSaved == level*5)
         {
             sheepSpawner.DestroyAllSheep();
+            soundPlayer.PlayOneShot(levelUpSound, 1.0f);
             sheep.runSpeed = sheep.runSpeed * 2;
             level++;
             Debug.Log("LevelUp");

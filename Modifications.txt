@@ -1,0 +1,4 @@
+La modificacion que he realizado son niveles.
+
+Cada vez que salvas a 5 ovejas subes de nivel, es decir, la velocidad de movimiento de las ovejas se multiplica por dos.
+Para que el jugador sepa que ha subido de nivel se eliminan todas las ovejas del nivel actual, suena un efecto de sonido y vuelven a salir las ovejas a la nueva velocidad
